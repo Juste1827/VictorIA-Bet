@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 33% 2%;
+    --foreground: 210 40% 98%;
+    --primary: 82 100% 50%;
+    --muted: 215 20% 65%;
+  }
+
+  .light-mode {
+    --background: 210 40% 98%;
+    --foreground: 220 33% 2%;
+    --muted: 215 20% 35%;
+  }
+}
+
+.light-mode {
+  background-color: #F8FAFC !important;
+  color: #020408 !important;
+}
+
+.light-mode .glass-card {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+
+.light-mode .text-white {
+  color: #020408 !important;
+}
+
+.light-mode .text-muted {
+  color: #64748B !important;
+}
+
+.light-mode aside {
+  background: #FFFFFF !important;
+  border-right-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode header {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode main {
+  background: #F8FAFC !important;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground selection:bg-primary/30;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden;
+  }
+  
+  .glass-button {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/20 active:scale-95;
+  }
+  
+  .premium-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-white font-bold;
+  }
+  
+  .nav-link {
+    @apply text-muted hover:text-white transition-colors duration-200 relative;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full hover:bg-muted transition-colors;
+}
